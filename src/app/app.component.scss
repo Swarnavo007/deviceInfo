@@ -1,0 +1,16 @@
+table{
+    margin: auto;
+    border: 1px solid black;
+    background: white;
+    max-width: auto;
+    overflow-x: auto;
+}
+
+td, th{
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+tr:last-child{
+    border-bottom: none;
+}

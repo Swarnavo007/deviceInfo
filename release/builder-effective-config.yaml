@@ -1,0 +1,25 @@
+directories:
+  output: release
+  buildResources: resources
+productName: yourProductName
+appId: org.yourProductName
+dmg:
+  contents:
+    - x: 130
+      'y': 220
+    - x: 410
+      'y': 220
+      type: link
+      path: /Applications
+win:
+  target:
+    - nsis
+    - msi
+linux:
+  target:
+    - deb
+    - rpm
+    - snap
+    - AppImage
+  category: Development
+electronVersion: 11.2.2

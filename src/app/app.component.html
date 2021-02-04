@@ -1,0 +1,30 @@
+<p>Hello from Electron</p>
+<!-- <p>{{title}}</p> -->
+<!-- <button (click)='display()'>Click</button> -->
+<!-- <ul>
+    <li *ngFor="let detail of details">{{detail}}</li>
+</ul>
+<ul>
+    <li *ngFor="let number of numbers">{{number}}</li>
+</ul> -->
+<table>
+    <tr>
+        <th>VendorId</th>
+        <th>ProductId</th>
+        <th>Manufacturer</th>
+        <th>Product</th>
+    </tr>
+    <tr  *ngFor="let detail of details">
+        <td>{{detail.vendorId}}</td>
+        <td>{{detail.productId}}</td>
+        <td>{{detail.manufacturer}}</td>
+        <td>{{detail.product}}</td>
+    </tr>
+</table>
+<p>{{length}}</p>
+<!-- <app-home></app-home>
+<p>{{details[0]}}</p> -->
+
+<p>End of devices</p>
+
+<router-outlet></router-outlet>
