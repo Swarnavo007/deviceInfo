@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IpcService } from './providers/electron.service';
 import {DataService } from './data.service';
@@ -22,21 +22,25 @@ export class AppComponent implements OnInit {
   public numbers=[1,2,3,4];
   public length:number=0;
 
-  constructor(private readonly ipc: IpcService, private datas:DataService) {
+  constructor(private readonly ipc: IpcService, private datas:DataService, private zone:NgZone) {
     this.ipc.on('my-event', (e: any, val: string) => {
       console.log('my-event: ' + val);
     });
   }
 
   ngOnInit():void{
-    this.ipc.send('open-display');
     this.ipc.on('send',(event: any,arg: any)=>{
-      this.details=JSON.parse(arg);
+      this.zone.run(()=>{
+        this.details=JSON.parse(arg);
       // console.log(arg)
       console.log(this.details);
       this.datas.insert(this.details);
       this.length=this.details.length;
+      })
+      
     })
+    this.ipc.send('open-display');
+    
   }
   // display(){
   //   this.ipc.send('open-display');
