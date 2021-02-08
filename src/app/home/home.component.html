@@ -1,2 +1,15 @@
-<p>home works!</p>
-<p>{{information}}</p>
+<h1>Angular Store </h1>
+<div *ngIf="post | async">
+
+
+    <h2>{{ (post|async).text}}</h2>
+    <h4>Votes: {{ (post|async).likes }}</h4>
+  
+    <button (click)="upvote()">Upvote</button>
+    <button (click)="downvote()">Downvote</button>
+    <button (click)="resetPost()">Reset</button>
+  
+    <input [(ngModel)]="text">
+    <button (click)="editText()" >Change Title</button>
+  
+  </div>

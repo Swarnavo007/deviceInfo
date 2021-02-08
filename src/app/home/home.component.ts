@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { Post } from '../model/post.model';
+import * as PostActions from '../actions/post.action'
+
+interface AppState {
+  post: Post;
+}
 
 @Component({
   selector: 'app-home',
@@ -8,12 +16,38 @@ import { DataService } from '../data.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private data:DataService) { }
+  post: Observable<Post> // emits value of type Post
+  // emits value of type Post
 
-  public information:any[]=[];
+  // emits value of type Post
+  text:string /// form input val
+ /// form input val
+
+  constructor(private store: Store<AppState>) { 
+    this.post = this.store.select('post')
+  }
+  
 
   ngOnInit(): void {
-    this.information=this.data.info;
+    
   }
+
+  editText() {
+    this.store.dispatch(new PostActions.EditText(this.text) )
+  }
+
+  resetPost() {
+    this.store.dispatch(new PostActions.Reset())
+  }
+
+  upvote() {
+    this.store.dispatch(new PostActions.Upvote())
+  }
+
+  downvote() {
+    this.store.dispatch(new PostActions.Downvote())
+  }
+
+  
 
 }

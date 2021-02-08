@@ -20,6 +20,7 @@ export class AppComponent implements OnInit {
   // }
   public details:any[]=[];
   public numbers=[1,2,3,4];
+  public infos:any[]=[];
   public length:number=0;
 
   constructor(private readonly ipc: IpcService, private datas:DataService, private zone:NgZone) {
@@ -38,6 +39,12 @@ export class AppComponent implements OnInit {
       this.length=this.details.length;
       })
       
+    })
+    this.ipc.on('value',(event:any,arg:any)=>{
+      this.zone.run(()=>{
+        this.infos=JSON.parse(arg);
+      })
+      console.log(JSON.parse(arg));
     })
     this.ipc.send('open-display');
     

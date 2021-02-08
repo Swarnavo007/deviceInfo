@@ -1,4 +1,4 @@
-<p>Hello from Electron</p>
+<h1>Hello from Electron</h1>
 <!-- <p>{{title}}</p> -->
 <!-- <button (click)='display()'>Click</button> -->
 <!-- <ul>
@@ -21,10 +21,25 @@
         <td>{{detail.product}}</td>
     </tr>
 </table>
+
 <p>{{length}}</p>
-<!-- <app-home></app-home>
+<!-- 
 <p>{{details[0]}}</p> -->
 
 <p>End of devices</p>
 
+<h2>Database values are</h2>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+    </tr>
+    <tr *ngFor="let info of infos">
+        <td>{{info.id}}</td>
+        <td>{{info.title}}</td>
+    </tr>
+    
+</table>
+<!-- <app-database></app-database> -->
+<app-home></app-home>
 <router-outlet></router-outlet>
